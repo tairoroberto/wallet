@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.brq.wallet">
+
+    <!-- basics -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
+    <!-- Permissions required for Google Cloud Messaging -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <!-- sending a NFC payment request -->
+    <uses-permission android:name="android.permission.NFC"/>
+    <!-- scanning qr codes -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- location for local trader -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <!-- we really don't want to spy on our users -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" tools:node="remove" />
+
+    <uses-feature
+        android:name="android.hardware.location.network"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.location"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false"/>
+    <!-- nexus 7 has no backside camera but frontside camera should be able to scan -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false"/>
+
+    <application
+        android:name="com.brq.wallet.WalletApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/MyceliumModern">
+
+        <!-- Service for Google Cloud Messaging -->
+        <service android:name="com.brq.wallet.lt.notification.GcmIntentService"/>
+        <service
+            android:name="com.brq.wallet.service.TaskExecutionService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":Task"/>
+
+        <!-- hack - hardcode to be able to support froyo -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+
+        <!-- Startup -->
+        <activity
+            android:name="com.brq.wallet.activity.StartupActivity"
+            android:label="@string/app_short_name"
+            android:theme="@style/MyceliumLauncher">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+            <!-- bitcoin uri scheme -->
+            <intent-filter android:label="@string/send_bitcoins">
+                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="bitcoin"/>
+            </intent-filter>
+
+            <!-- payment request mime type uri scheme -->
+            <intent-filter android:label="@string/send_bitcoins">
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:mimeType="application/bitcoin-paymentrequest"/>
+            </intent-filter>
+
+
+            <!-- bitid authentication scheme -->
+            <intent-filter android:label="@string/bitid_authentication">
+                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="bitid"/>
+            </intent-filter>
+
+            <!-- BIP 121 Proof of Payment URI scheme -->
+            <intent-filter android:label="@string/pop_send_pop">
+                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="btcpop"/>
+            </intent-filter>
+
+            <!-- Glidera -->
+            <!-- used as a callback url from within the browser after signup -->
+            <intent-filter android:label="Glidera">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="mycelium"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <!-- ATTENTION: This data URL was auto-generated. We recommend that you use the HTTP scheme.
+                  TODO: Change the host or pathPrefix as necessary. -->
+                <data
+                    android:host="wallet.mycelium.com"
+                    android:pathPrefix="/startup"
+                    android:scheme="http"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.brq.wallet.activity.modern.ModernMain"
+            android:theme="@style/MyceliumActionBar"/>
+        <activity android:name="com.brq.wallet.activity.AboutActivity"/>
+        <activity android:name="com.brq.wallet.activity.modern.GetFromAddressBookActivity"/>
+        <activity android:name="com.brq.wallet.activity.AddAccountActivity"/>
+        <activity android:name="com.brq.wallet.activity.AddAdvancedAccountActivity"/>
+        <activity android:name="com.brq.wallet.activity.AddCoinapultAccountActivity"/>
+        <activity android:name="com.brq.wallet.activity.ScanActivity"/>
+        <activity android:name="com.brq.wallet.activity.TransactionDetailsActivity"/>
+        <activity android:name="com.brq.wallet.activity.settings.SettingsActivity"/>
+        <activity android:name="com.brq.wallet.activity.settings.SetLocalCurrencyActivity"/>
+        <activity android:name="com.brq.wallet.activity.export.ExportAsQrCodeActivity"/>
+        <activity android:name="com.brq.wallet.activity.export.BackupToPdfActivity"/>
+        <activity android:name="com.brq.wallet.activity.export.MrdDecryptDataActivity"/>
+        <activity android:name="com.brq.wallet.activity.export.VerifyBackupActivity"/>
+        <activity android:name="com.brq.wallet.activity.export.DecryptBip38PrivateKeyActivity"/>
+        <activity android:name="com.brq.wallet.activity.send.GetSpendingRecordActivity"/>
+        <activity android:name="com.brq.wallet.activity.modern.UnspentOutputsActivity"/>
+        <activity android:name="com.brq.wallet.activity.send.InstantWalletActivity">
+
+            <!--
+             <intent-filter>
+                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                 <data android:mimeType="application/bitcoin-privatekey" />
+                 <category android:name="android.intent.category.DEFAULT" />
+             </intent-filter>
+            -->
+        </activity>
+        <activity android:name="com.brq.wallet.activity.send.SendInitializationActivity"/>
+        <activity android:name="com.brq.wallet.activity.send.ColdStorageSummaryActivity"/>
+        <activity android:name="com.brq.wallet.activity.send.SendMainActivity"/>
+        <activity android:name="com.brq.wallet.activity.send.ManualAddressEntry"/>
+        <activity android:name="com.brq.wallet.activity.send.SignTransactionActivity"/>
+        <activity android:name="com.brq.wallet.activity.send.BroadcastTransactionActivity"/>
+        <activity android:name="com.brq.wallet.activity.receive.ReceiveCoinsActivity"/>
+        <activity
+            android:name="com.google.zxing.client.android.CaptureActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateAlwaysHidden">
+        </activity>
+        <activity android:name="com.brq.wallet.lt.activity.LtMainActivity"/>
+        <activity android:name="com.brq.wallet.lt.activity.CreateTrader1Activity"/>
+        <activity android:name="com.brq.wallet.lt.activity.CreateTrader2Activity"/>
+        <activity android:name="com.brq.wallet.lt.activity.CreateTrader3Activity"/>
+        <activity android:name="com.brq.wallet.lt.activity.SolveCaptchaActivity"/>
+        <activity
+            android:name="com.brq.wallet.lt.activity.TradeActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name="com.brq.wallet.lt.activity.ChangeLocationActivity"/>
+        <activity
+            android:name="com.brq.wallet.lt.activity.EnterLocationActivity"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity android:name="com.brq.wallet.lt.activity.ChangePriceActivity"/>
+        <activity android:name="com.brq.wallet.lt.activity.RefreshPriceActivity"/>
+        <activity android:name="com.brq.wallet.lt.activity.EnterFiatAmountActivity"/>
+        <activity android:name="com.brq.wallet.lt.activity.ViewTraderInfoActivity"/>
+        <activity android:name="com.brq.wallet.lt.activity.buy.CreateTradeActivity"/>
+        <activity android:name="com.brq.wallet.lt.activity.buy.SetTradeAddress"/>
+        <activity android:name="com.brq.wallet.lt.activity.sell.CreateOrEditAdActivity"/>
+        <activity android:name="com.brq.wallet.lt.activity.SendRequestActivity"/>
+        <activity android:name="com.brq.wallet.activity.UpdateNotificationActivity"/>
+        <activity android:name="com.brq.wallet.activity.PinProtectedActivity"/>
+        <activity android:name="com.brq.wallet.activity.MessageSigningActivity"/>
+        <activity android:name="com.brq.wallet.activity.ImportSeedActivity"/>
+        <activity android:name="com.brq.wallet.activity.EnterWordListActivity"/>
+        <activity android:name="com.brq.wallet.activity.BackupWordListActivity"/>
+        <activity android:name="com.brq.wallet.activity.VerifyWordListActivity"/>
+        <activity android:name="com.brq.wallet.activity.AdditionalBackupWarningActivity"/>
+        <activity android:name="com.brq.wallet.activity.modern.HDSigningActivity"/>
+        <activity android:name="com.brq.wallet.activity.BipSsImportActivity"/>
+        <activity android:name="com.brq.wallet.activity.CreateKeyActivity"/>
+        <activity android:name="com.brq.wallet.activity.HandleUrlActivity"/>
+        <activity android:name="com.brq.wallet.extsig.trezor.activity.InstantTrezorActivity"/>
+        <activity android:name="com.brq.wallet.extsig.trezor.activity.TrezorAccountImportActivity"/>
+        <activity android:name="com.brq.wallet.extsig.trezor.activity.TrezorSignTransactionActivity"/>
+        <activity android:name="com.brq.wallet.extsig.keepkey.activity.InstantKeepKeyActivity"/>
+        <activity android:name="com.brq.wallet.extsig.keepkey.activity.KeepKeyAccountImportActivity"/>
+        <activity android:name="com.brq.wallet.extsig.keepkey.activity.KeepKeySignTransactionActivity"/>
+        <activity android:name="com.brq.wallet.extsig.ledger.activity.LedgerAccountImportActivity"/>
+        <activity android:name="com.brq.wallet.extsig.ledger.activity.LedgerSignTransactionActivity"/>
+        <activity android:name="com.brq.wallet.activity.InstantMasterseedActivity"/>
+        <activity android:name="com.brq.wallet.activity.ConnectionLogsActivity"/>
+        <activity android:name="com.brq.wallet.activity.GetAmountActivity"/>
+        <activity android:name="com.brq.wallet.activity.StringHandlerActivity"/>
+        <activity android:name="com.brq.wallet.activity.send.VerifyPaymentRequestActivity"/>
+        <activity
+            android:name="com.brq.wallet.external.cashila.activity.CashilaSignUpActivity"
+            android:parentActivityName="com.brq.wallet.activity.modern.ModernMain"/>
+        <activity
+            android:name="com.brq.wallet.external.cashila.activity.CashilaAddRecipientActivity"
+            android:parentActivityName="com.brq.wallet.activity.modern.ModernMain"/>
+        <activity
+            android:name="com.brq.wallet.external.cashila.activity.CashilaPaymentsActivity"
+            android:parentActivityName="com.brq.wallet.activity.modern.ModernMain"/>
+
+        <activity
+            android:name="com.brq.wallet.bitid.BitIDAuthenticationActivity"
+            android:label="@string/title_activity_bit_idauthentication"/>
+
+        <activity android:name="com.brq.wallet.activity.pop.PopActivity"/>
+        <activity android:name="com.brq.wallet.activity.pop.PopSelectTransactionActivity"/>
+
+        <activity android:name="com.brq.wallet.external.glidera.activities.GlideraSendToNextStep"/>
+        <activity android:name="com.brq.wallet.external.glidera.activities.BuySellSelect"/>
+        <activity android:name="com.brq.wallet.external.glidera.activities.GlideraMainActivity"/>
+        <activity android:name="com.brq.wallet.external.glidera.activities.GlideraTransaction"/>
+
+
+    </application>
+
+</manifest>
