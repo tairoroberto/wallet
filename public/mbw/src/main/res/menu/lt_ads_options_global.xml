@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/miAddAd"
-        android:icon="@drawable/holo_dark_ic_action_new"
+        android:icon="@drawable/ic_plus_white_36dp"
         android:title="@string/lt_create_ad"
         yourapp:showAsAction="ifRoom|withText"/>
 

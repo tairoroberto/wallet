@@ -6,7 +6,7 @@
             android:id="@+id/miSetLabel"
             android:title="@string/set_label"
             yourapp:showAsAction="ifRoom|withText"
-            android:icon="@drawable/holo_dark_ic_action_labels"/>
+            android:icon="@drawable/ic_tag_multiple_white_36dp"/>
 
     <item
             android:id="@+id/miShowDetails"

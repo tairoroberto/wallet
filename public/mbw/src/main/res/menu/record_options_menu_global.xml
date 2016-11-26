@@ -4,17 +4,17 @@
 
     <item
             android:id="@+id/miAddRecord"
-            android:icon="@drawable/holo_dark_ic_action_new_account"
+            android:icon="@drawable/ic_key_plus_white_24dp"
             android:title="@string/add_key"
             yourapp:showAsAction="ifRoom|withText"/>
     <item
             android:id="@+id/miAddFiatAccount"
-            android:icon="@drawable/holo_dark_ic_action_new_usd_account"
+            android:icon="@drawable/ic_cash_usd_white_24dp"
             android:title="@string/add_fiat_key"
             yourapp:showAsAction="ifRoom|withText"/>
     <item
             android:id="@+id/miLockKeys"
-            android:icon="@drawable/holo_dark_ic_action_secure"
+            android:icon="@drawable/ic_lock_white_24dp"
             android:title="@string/lock_label"
             yourapp:showAsAction="ifRoom|withText"/>
 

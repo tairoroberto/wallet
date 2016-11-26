@@ -63,10 +63,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="10dp"
                     android:background="@drawable/btn_blue_slim"
                     android:contentDescription="Get a new captcha"
-                    android:src="@android:drawable/ic_menu_rotate" />
+                    android:src="@drawable/ic_rotate_right_white_48dp" />
             </LinearLayout>
         </FrameLayout>
 

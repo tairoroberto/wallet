@@ -6,11 +6,11 @@
             android:id="@+id/miRefresh"
             android:title="@string/refresh"
             yourapp:showAsAction="ifRoom|withText"
-            android:icon="@drawable/holo_dark_ic_action_refresh"/>
+            android:icon="@drawable/ic_sync_white_36dp"/>
 
     <item
             android:id="@+id/miOpenWebsite"
-            android:title="Open website"
+            android:title="@string/open_website"
             yourapp:showAsAction="never|withText"
             />
 </menu>

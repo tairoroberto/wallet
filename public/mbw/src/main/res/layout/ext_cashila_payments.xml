@@ -3,4 +3,4 @@
                                    android:id="@+id/pager"
                                    android:layout_width="match_parent"
                                    android:layout_height="match_parent"
-                                   tools:context="com.mycelium.wallet.com.brq.wallet.external.cashila.activity.CashilaPaymentsActivity"/>
+                                   tools:context="com.brq.wallet.external.cashila.activity.CashilaPaymentsActivity"/>

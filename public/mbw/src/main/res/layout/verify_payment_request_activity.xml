@@ -71,7 +71,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:visibility="gone"
-                        android:src="@drawable/holo_dark_ic_action_warning_yellow"/>
+                        android:src="@drawable/ic_alert_white_24dp"/>
 
                 <TextView
                         android:id="@+id/tvValid"

@@ -49,5 +49,8 @@
     <color name="colorIcons">#FFFFFF</color>
     <color name="colorDivider">#BDBDBD</color>
 
+    <color name="colorBackground">#568ab5</color>
+    <color name="colorSecondBackground">#c26723</color>
+
     <fraction name="background_alpha">50%</fraction>
 </resources>

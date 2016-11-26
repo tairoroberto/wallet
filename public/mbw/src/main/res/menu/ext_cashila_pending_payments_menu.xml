@@ -12,7 +12,7 @@
             android:id="@+id/miDeletePayment"
             android:title="@string/delete"
             yourapp:showAsAction="ifRoom"
-            android:icon="@drawable/holo_dark_ic_action_discard"/>
+            android:icon="@drawable/ic_delete_white_36dp"/>
 
     <item
             android:id="@+id/miShowDetails"

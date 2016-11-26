@@ -957,5 +957,6 @@
     <string name="label_type_it_in">type it in</string>
     <string name="label_use_device_location">use device location</string>
     <string name="label_list_activity_indicator">had activity</string>
+    <string name="open_website">Open website</string>
 
 </resources>

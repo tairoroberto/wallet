@@ -133,12 +133,17 @@ public class ModernMain extends ActionBarActivity {
       setContentView(mViewPager);
       ActionBar bar = getSupportActionBar();
       bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-      bar.setDisplayOptions(1, ActionBar.DISPLAY_SHOW_TITLE);
+      bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME | ActionBar.DISPLAY_SHOW_TITLE);
+
+      //getSupportActionBar().setHomeButtonEnabled(true);
+      //getSupportActionBar().setDisplayShowHomeEnabled(true);
+      getSupportActionBar().setIcon(R.mipmap.ic_launcher); //also displays wide logo
+      getSupportActionBar().setDisplayShowTitleEnabled(true);
 
       // Load the theme-background (usually happens in styles.xml) but use a lower
       // pixel format, this saves around 10MB of allocated memory
       // persist the loaded Bitmap in the context of mbw-manager and reuse it every time this activity gets created
-      try {
+      /*try {
          BitmapDrawable background = (BitmapDrawable) _mbwManager.getBackgroundObjectsCache().get("mainBackground", new Callable<BitmapDrawable>() {
             @Override
             public BitmapDrawable call() throws Exception {
@@ -152,8 +157,8 @@ public class ModernMain extends ActionBarActivity {
          });
          getWindow().setBackgroundDrawable(background);
       } catch (ExecutionException ignore) {
-      }
-
+      }*/
+      //getWindow().setBackgroundDrawableResource(R.color.colorBackground);
 
       mTabsAdapter = new TabsAdapter(this, mViewPager, _mbwManager);
       mAccountsTab = bar.newTab();

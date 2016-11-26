@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10dp"
-            android:drawableLeft="@drawable/holo_dark_ic_action_warning_yellow"
+            android:drawableLeft="@drawable/ic_alert_white_48dp"
             android:gravity="center_vertical"
             android:paddingBottom="7dp"
             android:paddingLeft="5dp"

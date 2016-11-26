@@ -196,7 +196,7 @@
                     android:layout_gravity="center"
                     android:contentDescription="@string/enter_amount_title"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/keyboard_icon" />
+                    android:src="@drawable/ic_keyboard_white_48dp" />
         </LinearLayout>
 
 

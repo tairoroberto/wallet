@@ -22,7 +22,7 @@
                 android:layout_height="fill_parent"
                 android:layout_gravity="center"
                 android:contentDescription="@string/label_single_key_icon"
-                tools:src="@drawable/singlekey_grey" >
+                tools:src="@drawable/ic_key_white_48dp" >
         </ImageView>
     </FrameLayout>
 

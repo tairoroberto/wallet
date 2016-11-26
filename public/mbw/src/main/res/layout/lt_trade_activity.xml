@@ -260,7 +260,7 @@
                     android:layout_gravity="center"
                     android:background="@color/transparent"
                     android:contentDescription="@string/send"
-                    android:src="@drawable/send" />
+                    android:src="@drawable/ic_send_white_36dp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

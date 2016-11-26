@@ -5,7 +5,7 @@
     <item
             android:id="@+id/miAddAddress"
             android:title="@string/add_dialog_title"
-            android:icon="@drawable/holo_dark_ic_action_add_person"
+            android:icon="@drawable/ic_account_plus_white_36dp"
             yourapp:showAsAction="ifRoom"/>
 
 </menu>
