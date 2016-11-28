@@ -78,7 +78,7 @@ public class RecordRowBuilder {
          Utils.setAlpha(rowView, 0.5f);
       }
 
-      int textColor = resources.getColor(R.color.secondary_text);
+      int textColor = resources.getColor(R.color.white);
 
       // Show focus if applicable
       if (hasFocus) {

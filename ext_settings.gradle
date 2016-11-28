@@ -3,7 +3,7 @@ ext {
     guavaArtifact = 'com.google.guava:guava:18.0'
     androidBuildArtifact = 'com.android.tools.build:gradle:2.0.0'
     slf4jVersion = '1.7.2'
-    androidSdkBuildVersion = "22.0.1"
+    androidSdkBuildVersion = "25.0.1"
     junitVersion = '4.8.1'
     projectRootDir = project.rootDir.getPath()
 

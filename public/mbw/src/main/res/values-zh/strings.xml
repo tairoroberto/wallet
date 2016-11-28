@@ -238,7 +238,7 @@
   <string name="version_label">版本</string>
   <string name="authors_label">由开发</string>
   <string name="homepage_label">首页</string>
-  <string name="homepage_url">https://mycelium.com</string>
+  <string name="homepage_url">http://www.brq.com</string>
   <string name="company_header">这个应用程序是由以下公司免费提供给您得，</string>
   <string name="contact_email_label">反馈</string>
   <string name="cancelled">取消</string>

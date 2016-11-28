@@ -44,6 +44,7 @@ import android.nfc.NfcAdapter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
@@ -82,7 +83,7 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.UUID;
 
-public class StartupActivity extends Activity {
+public class StartupActivity extends AppCompatActivity {
 
    private static final int MINIMUM_SPLASH_TIME = 500;
    private static final int REQUEST_FROM_URI = 2;
@@ -97,11 +98,11 @@ public class StartupActivity extends Activity {
    protected void onCreate(Bundle savedInstanceState) {
       requestWindowFeature(Window.FEATURE_NO_TITLE);
       super.onCreate(savedInstanceState);
-      _progress = new ProgressDialog(this);
       setContentView(R.layout.startup_activity);
+      _progress = new ProgressDialog(this);
       // Do slightly delayed initialization so we get a chance of displaying the
       // splash before doing heavy initialization
-      new Handler().postDelayed(delayedInitialization, 200);
+      new Handler().postDelayed(delayedInitialization, 1000);
    }
 
    @Override

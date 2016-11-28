@@ -50,6 +50,7 @@
 
 #Keep classes that are referenced on the AndroidManifest
 -keep public class * extends android.app.Activity
+-keep public class * extends android.support.v7.app.AppCompatActivity
 -keep public class * extends android.app.Application
 -keep public class * extends android.app.Service
 -keep public class * extends android.content.BroadcastReceiver
@@ -133,7 +134,7 @@
 }
 
 #keep classes used for deserializing json
--keepclasseswithmembers class com.mycelium.wallet.bitid.json.** {
+-keepclasseswithmembers class com.brq.wallet.bitid.json.** {
   <init>(...);
   *;
 }
@@ -165,8 +166,8 @@
 
 # retrofit + API interfaces
 -keep class retrofit.** { *; }
--keep class com.mycelium.wallet.external.cashila.api.** { *; }
--keep class com.mycelium.wallet.external.glidera.api.** { *; }
+-keep class com.brq.wallet.external.cashila.api.** { *; }
+-keep class com.brq.wallet.external.glidera.api.** { *; }
 -keepclassmembernames interface * {
     @retrofit.http.* <methods>;
 }

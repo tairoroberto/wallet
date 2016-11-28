@@ -122,7 +122,8 @@
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -135,8 +136,7 @@
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/buttonspacing">
-
+                android:layout_marginBottom="20dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -154,7 +154,8 @@
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/buttonspacing">
+                android:layout_marginTop="@dimen/buttonspacing"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -173,7 +174,8 @@
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/buttonspacing">
+                android:layout_marginTop="@dimen/buttonspacing"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -193,7 +195,8 @@
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/buttonspacing">
+                android:layout_marginTop="@dimen/buttonspacing"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
